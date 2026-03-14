@@ -33,7 +33,7 @@ const Cart = () => {
       {cartItems.map((item) => (
         <div
           key={item.id}
-          className="flex items-center justify-between border p-4 rounded-lg mb-4"
+          className="grid grid-cols-[1fr_auto_auto] items-center border p-4 rounded-lg mb-4 gap-6 "
         >
 
           <div className="flex items-center gap-4">
