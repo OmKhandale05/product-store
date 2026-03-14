@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import CategoryFilter from "../components/CategoryFilter";
 import ProductCard from "../components/ProductCard";
 import api from "../services/api";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -34,6 +35,11 @@ const Home = () => {
   }
   return (
     <div className="p-8">
+
+      <Link to="/cart"
+      className="border px-4 py-2 rounded-lg hover:bg-gray-100">
+        Cart
+      </Link>
       <CategoryFilter category={category} setCategory={setCategory} />
       <div className="p-8 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {products.map((product) => (
