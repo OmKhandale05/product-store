@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import { useCart } from "../context/CartContext";
+import SearchBar from "./SearchBar";
 
 
-const Navbar = () => {
+const Navbar = ({search, setSearch}) => {
     const { cartItems } = useCart();
 
   const totalItems = cartItems.reduce(
@@ -14,12 +15,12 @@ const Navbar = () => {
     return ( 
         <nav className="flex justify-between items-center px-8 py-4 border-b">
 
-      {/* Logo */}
+      
       <Link to="/" className="text-xl font-bold">
-        FakeStore
+        ProductStore
       </Link>
 
-      {/* Cart */}
+      <SearchBar search={search} setSearch={setSearch}/>
       <Link
         to="/cart"
         className="relative flex items-center"

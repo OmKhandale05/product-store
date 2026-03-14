@@ -6,11 +6,11 @@ import SearchBar from "../components/SearchBar";
 
 
 
-const Home = () => {
+const Home = ({search}) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [category, setCategory] = useState("all");
-  const [search, setSearch] = useState("");
+  // const [search, setSearch] = useState("");
 
   useEffect(() => {
     setLoading(true);
@@ -44,11 +44,7 @@ const Home = () => {
   return (
     <div className="p-8">
       <div className="flex justify-between items-center mb-6">
-        <SearchBar
-          search={search}
-          setSearch={setSearch}
         
-        />
       </div>
       <CategoryFilter category={category} setCategory={setCategory} />
       <div className="p-8 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
