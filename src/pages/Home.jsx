@@ -3,6 +3,8 @@ import CategoryFilter from "../components/CategoryFilter";
 import ProductCard from "../components/ProductCard";
 import api from "../services/api";
 
+
+
 const Home = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
