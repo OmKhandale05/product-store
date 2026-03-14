@@ -1,4 +1,5 @@
 import { StarIcon } from "@heroicons/react/24/solid";
+import { EyeIcon, ShoppingCartIcon } from "@heroicons/react/24/outline";
 
 const ProductCard = ({ product }) => {
   return (
@@ -29,9 +30,16 @@ const ProductCard = ({ product }) => {
           ${product.price}
         </p>
 
-        <button className="mt-4 bg-black text-white py-2 px-4 rounded-lg hover:bg-gray-800 transition">
-          View Product
-        </button>
+        <div className="flex gap-2 mt-3">
+          <button className="flex items-center justify-center gap-1 w-full bg-black text-white py-2 rounded-lg hover:bg-gray-600 transition">
+            <EyeIcon className="h-5 w-5" />
+            See Product
+          </button>
+          <button className="flex items-center justify-center gap-1 w-full border border-gray-300 py-2 rounded-lg hover:bg-gray-200 transition">
+            <ShoppingCartIcon className="h-5 w-5" />
+            Add to Cart
+          </button>
+        </div>
       </div>
     </div>
   );
