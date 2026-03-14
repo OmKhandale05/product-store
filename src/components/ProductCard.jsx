@@ -3,15 +3,15 @@ import { EyeIcon, ShoppingCartIcon } from "@heroicons/react/24/outline";
 
 const ProductCard = ({ product }) => {
   return (
-    <div className="bg-white p-4 rounded-xl shadow-md hover-shadow-xl transition duration-300 flex flex-col h-full">
+    <div className="group bg-white p-4 rounded-xl shadow-md hover-shadow-xl transition duration-300 flex flex-col h-full">
       <span className="text-xs bg-gray-200 px-2 py-1 rounded w-fit capitalize">
         {product.category}
       </span>
-      <div className="h-48 flex items-center justify-center">
+      <div className="h-48 flex items-center justify-center overflow-hidden">
         <img
           src={product.image}
           alt={product.title}
-          className="h-40 object-contain"
+          className="h-40 object-contain transition-transform duration-300 group-hover:scale-110"
         />
       </div>
 
