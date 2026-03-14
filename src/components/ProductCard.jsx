@@ -1,8 +1,10 @@
 import { StarIcon } from "@heroicons/react/24/solid";
 import { EyeIcon, ShoppingCartIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
+import { useCart } from "../context/CartContext";
 
 const ProductCard = ({ product }) => {
+  const { addToCart} = useCart();
   return (
     <div className="group bg-white p-4 rounded-xl shadow-md hover-shadow-xl transition duration-300 flex flex-col h-full">
       <span className="text-xs bg-gray-200 px-2 py-1 rounded w-fit capitalize">
@@ -39,7 +41,7 @@ const ProductCard = ({ product }) => {
             <EyeIcon className="h-5 w-5" />
             See Product
           </Link>
-          <button className="flex items-center justify-center gap-1 w-full border border-gray-300 py-2 rounded-lg hover:bg-gray-200 transition">
+          <button onClick={() => addToCart(product)} className="flex items-center justify-center gap-1 w-full border border-gray-300 py-2 rounded-lg hover:bg-gray-200 transition">
             <ShoppingCartIcon className="h-5 w-5" />
             Add to Cart
           </button>
