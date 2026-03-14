@@ -1,5 +1,6 @@
 import { StarIcon } from "@heroicons/react/24/solid";
 import { EyeIcon, ShoppingCartIcon } from "@heroicons/react/24/outline";
+import { Link } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
   return (
@@ -31,10 +32,13 @@ const ProductCard = ({ product }) => {
         </p>
 
         <div className="flex gap-2 mt-3">
-          <button className="flex items-center justify-center gap-1 w-full bg-black text-white py-2 rounded-lg hover:bg-gray-600 transition">
+          <Link
+            to={`/product/${product.id}`}
+            className="flex items-center justify-center gap-1 w-full bg-black text-white py-2 rounded-lg hover:bg-gray-600 transition"
+          >
             <EyeIcon className="h-5 w-5" />
             See Product
-          </button>
+          </Link>
           <button className="flex items-center justify-center gap-1 w-full border border-gray-300 py-2 rounded-lg hover:bg-gray-200 transition">
             <ShoppingCartIcon className="h-5 w-5" />
             Add to Cart
