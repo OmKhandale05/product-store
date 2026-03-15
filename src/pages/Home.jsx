@@ -4,6 +4,7 @@ import ProductCard from "../components/ProductCard";
 import api from "../services/api";
 import SearchBar from "../components/SearchBar";
 import ProductSkeleton from "../components/ProductSkeleton";
+import SortFilter from "../components/SortFilter";
 
 
 
@@ -11,6 +12,7 @@ const Home = ({search}) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [category, setCategory] = useState("all");
+  const [sort, setSort] = useState("");
   // const [search, setSearch] = useState("");
 
   useEffect(() => {
@@ -41,7 +43,10 @@ const Home = ({search}) => {
   }
 
   const filteredProduct = products.filter((product) =>
-    product.title.toLowerCase().includes(search.toLowerCase()) 
+    product.title.toLowerCase().includes(search.toLowerCase())
+
+
+ 
   
   );
   return (
@@ -55,6 +60,10 @@ const Home = ({search}) => {
           <ProductCard key={product.id} product={product} />
         ))}
       </div>
+      <SortFilter
+      sort={sort}
+      setSort={setSort}
+      />
     </div>
   );
 };
