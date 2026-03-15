@@ -3,6 +3,7 @@ import CategoryFilter from "../components/CategoryFilter";
 import ProductCard from "../components/ProductCard";
 import api from "../services/api";
 import SearchBar from "../components/SearchBar";
+import ProductSkeleton from "../components/ProductSkeleton";
 
 
 
@@ -31,8 +32,10 @@ const Home = ({search}) => {
 
   if (loading) {
     return (
-      <div className="text-center mt-20 text-xl font-semibold">
-        Loading products...
+      <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-8">
+        {[...Array(8)].map((_, index) => (
+          <ProductSkeleton key={index} />
+        ))}
       </div>
     );
   }
