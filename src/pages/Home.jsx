@@ -92,8 +92,9 @@ const Home = ({ search }) => {
         <CategoryFilter category={category} setCategory={setCategory} />
         <div className="flex gap-4">
           <PriceFilter priceRange={priceRange} setPriceRange={setPriceRange} />
+          <SortFilter sort={sort} setSort={setSort} />
         </div>
-        <SortFilter sort={sort} setSort={setSort} />
+        
       </div>
 
       <div className="p-8 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">

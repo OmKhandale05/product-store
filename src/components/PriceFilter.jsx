@@ -1,9 +1,11 @@
 const PriceFilter = ({ priceRange, setPriceRange }) => {
-    return ( 
+    return (
+        <div className="flex items-center gap-2">
+            <label className=" font">Price:</label>
         <select
         value={priceRange}
         onChange={(e) => setPriceRange(e.target.value)}
-        className="h-10 px-3 border rounded-lg text-sm"
+        className="h-10 px-3 border rounded-lg text-sm outline-none"
         
         >
             <option value="">All Prices</option>
@@ -14,6 +16,9 @@ const PriceFilter = ({ priceRange, setPriceRange }) => {
 
 
         </select>
+
+        </div>
+        
      );
 }
  
