@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import CategoryFilter from "../components/CategoryFilter";
 import ProductCard from "../components/ProductCard";
 import api from "../services/api";
-import SearchBar from "../components/SearchBar";
 import ProductSkeleton from "../components/ProductSkeleton";
 import SortFilter from "../components/SortFilter";
 import PriceFilter from "../components/PriceFilter";
