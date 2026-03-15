@@ -60,9 +60,11 @@ const Home = ({ search }) => {
 
   return (
     <div className="p-8">
-      <div className="flex justify-between items-center mb-6"></div>
+      <div className="flex justify-between items-center mb-6">
       <CategoryFilter category={category} setCategory={setCategory} />
       <SortFilter sort={sort} setSort={setSort} />
+      </div>
+      
       <div className="p-8 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {sortedProducts.map((product) => (
           <ProductCard key={product.id} product={product} />
