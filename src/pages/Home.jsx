@@ -5,12 +5,14 @@ import api from "../services/api";
 import SearchBar from "../components/SearchBar";
 import ProductSkeleton from "../components/ProductSkeleton";
 import SortFilter from "../components/SortFilter";
+import PriceFilter from "../components/PriceFilter";
 
 const Home = ({ search }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [category, setCategory] = useState("all");
   const [sort, setSort] = useState("");
+  const [priceRange, setPriceRange] = useState("");
   // const [search, setSearch] = useState("");
 
   useEffect(() => {
@@ -44,7 +46,33 @@ const Home = ({ search }) => {
     product.title.toLowerCase().includes(search.toLowerCase())
   );
 
-  let sortedProducts = [...filteredProduct];
+  let priceFilteredProducts = [...filteredProduct];
+
+  if (priceRange === "0-50") {
+    priceFilteredProducts = priceFilteredProducts.filter(
+      (product) => product.price <= 50
+    );
+  }
+
+  if (priceRange === "50-100") {
+    priceFilteredProducts = priceFilteredProducts.filter(
+      (product) => product.price > 50 && product.price <= 100
+    );
+  }
+
+  if (priceRange === "100-500") {
+    priceFilteredProducts = priceFilteredProducts.filter(
+      (product) => product.price > 100 && product.price <= 500
+    );
+  }
+
+  if (priceRange === "500+") {
+    priceFilteredProducts = priceFilteredProducts.filter(
+      (product) => product.price > 500
+    );
+  }
+
+  let sortedProducts = [...priceFilteredProducts];
 
   if (sort === "priceLow") {
     sortedProducts.sort((a, b) => a.price - b.price);
@@ -61,10 +89,13 @@ const Home = ({ search }) => {
   return (
     <div className="p-8">
       <div className="flex justify-between items-center mb-6">
-      <CategoryFilter category={category} setCategory={setCategory} />
-      <SortFilter sort={sort} setSort={setSort} />
+        <CategoryFilter category={category} setCategory={setCategory} />
+        <div className="flex gap-4">
+          <PriceFilter priceRange={priceRange} setPriceRange={setPriceRange} />
+        </div>
+        <SortFilter sort={sort} setSort={setSort} />
       </div>
-      
+
       <div className="p-8 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {sortedProducts.map((product) => (
           <ProductCard key={product.id} product={product} />
