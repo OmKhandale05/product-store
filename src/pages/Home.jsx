@@ -6,9 +6,7 @@ import SearchBar from "../components/SearchBar";
 import ProductSkeleton from "../components/ProductSkeleton";
 import SortFilter from "../components/SortFilter";
 
-
-
-const Home = ({search}) => {
+const Home = ({ search }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [category, setCategory] = useState("all");
@@ -44,26 +42,32 @@ const Home = ({search}) => {
 
   const filteredProduct = products.filter((product) =>
     product.title.toLowerCase().includes(search.toLowerCase())
-
-
- 
-  
   );
+
+  let sortedProducts = [...filteredProduct];
+
+  if (sort === "priceLow") {
+    sortedProducts.sort((a, b) => a.price - b.price);
+  }
+
+  if (sort === "priceHigh") {
+    sortedProducts.sort((a, b) => b.price - a.price);
+  }
+
+  if (sort === "rating") {
+    sortedProducts.sort((a, b) => b.rating.rate - a.rating.rate);
+  }
+
   return (
     <div className="p-8">
-      <div className="flex justify-between items-center mb-6">
-        
-      </div>
+      <div className="flex justify-between items-center mb-6"></div>
       <CategoryFilter category={category} setCategory={setCategory} />
+      <SortFilter sort={sort} setSort={setSort} />
       <div className="p-8 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {filteredProduct.map((product) => (
+        {sortedProducts.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
       </div>
-      <SortFilter
-      sort={sort}
-      setSort={setSort}
-      />
     </div>
   );
 };

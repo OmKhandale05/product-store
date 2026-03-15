@@ -15,5 +15,5 @@ const SortFilter = ({ sort, setSort}) => {
         </div>
     );
 }
- 
+
 export default SortFilter;
