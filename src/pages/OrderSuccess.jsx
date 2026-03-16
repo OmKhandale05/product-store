@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const OrderSuccess = () => {
     return ( 
-        <div className="flex flex-col items-center justify-center text-center px-4 min-h-[60vh]">
+        <div className="flex flex-col items-center justify-center text-center px-4 min-h-[60vh] mt-20">
             <img 
             src="https://cdn-icons-png.flaticon.com/512/190/190411.png"
             alt="success"

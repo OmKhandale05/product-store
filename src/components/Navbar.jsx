@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import { useCart } from "../context/CartContext";
 import SearchBar from "./SearchBar";
+import { useLocation } from "react-router-dom";
 
 
 const Navbar = ({search, setSearch}) => {
@@ -11,6 +12,9 @@ const Navbar = ({search, setSearch}) => {
     (acc, item) => acc + item.quantity,
     0
   );
+  const location = useLocation();
+
+  const hideSearch = location.pathname === "/cart" || location.pathname === "/checkout" || location.pathname === "/order-success";
 
     return ( 
         <nav className="flex justify-between items-center px-8 py-4 border-b">
@@ -19,8 +23,11 @@ const Navbar = ({search, setSearch}) => {
       <Link to="/" className="text-xl font-bold">
         ProductStore
       </Link>
+      {!hideSearch && (
+        <SearchBar search={search} setSearch={setSearch}/>
 
-      <SearchBar search={search} setSearch={setSearch}/>
+      )}
+      
       <Link
         to="/cart"
         className="relative flex items-center"
