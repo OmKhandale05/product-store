@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 
 const Cart = () => {
@@ -67,10 +68,12 @@ const Cart = () => {
 
       <div className="mt-6 flex justify-between items-center">
         <h2 className="text-xl font-bold">Total: ${total.toFixed(2)}</h2>
-
-        <button className="bg-black text-white px-6 py-3 rounded-lg">
+        <Link
+        to="/checkout"
+        className="bg-black text-white px-6 py-3 rounded-lg"
+        >
           Checkout
-        </button>
+        </Link>
       </div>
     </div>
   );
