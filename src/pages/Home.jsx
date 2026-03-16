@@ -86,7 +86,7 @@ const Home = ({ search }) => {
   }
 
   return (
-    <div className="p-8">
+    <div className="px-4 py-6 sm:px-6 lg:px-8">
       <div className="flex flex-col lg:flex-row lg:items-center sm:justify-between gap-4  mb-6">
         <CategoryFilter category={category} setCategory={setCategory} />
         <div className="flex flex-wrap gap-3">
@@ -96,7 +96,7 @@ const Home = ({ search }) => {
         
       </div>
 
-      <div className="p-8 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {sortedProducts.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
