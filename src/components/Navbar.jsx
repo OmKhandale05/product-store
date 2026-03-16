@@ -13,7 +13,7 @@ const Navbar = ({search, setSearch}) => {
   );
 
     return ( 
-        <nav className="flex justify-between items-center px-8 py-4 border-b">
+        <nav className="flex flex-col md:flex-row items-center justify-between gap-4 px-6 py-4 border-b">
 
       
       <Link to="/" className="text-xl font-bold">
