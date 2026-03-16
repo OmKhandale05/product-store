@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useCart } from "../context/CartContext";
 
@@ -14,6 +15,7 @@ const Checkout = () => {
     (acc, item) => acc + item.price * item.quantity,
     0
   );
+  const navigate = useNavigate();
 
   const handleOrder = () => {
     if(!name || !email || !address || !pincode){
@@ -23,6 +25,8 @@ const Checkout = () => {
     }
     toast.success("Order placed successfully..");
     clearCart();
+    navigate("/order-success");
+    
   };
   return (
     <div className="max-w-6xl mx-auto p-6 grid md:grid-cols-2 gap-8">
