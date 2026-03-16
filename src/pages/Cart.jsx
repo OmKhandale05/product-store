@@ -11,18 +11,18 @@ const Cart = () => {
 
   if (cartItems.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center mt-20 text-center">
+      <div className="flex flex-col items-center justify-center mt-20 text-center px-4 ">
         <img
         src="https://cdn-icons-png.flaticon.com/512/11329/11329060.png"
         alt="Empty Cart"
-        className="w-52 mb-6"
+        className="w-40 sm:w-52 mb-6 animate-pulse"
         />
         <h2 className="text-2xl font-semibold mb-2">Your cart is empty</h2>
         <p className="text-gray-500 mb-6">Looks like you haven't added anything yet.</p>
 
         <Link
         to="/"
-        className="bg-black text-white rounded-lg px-6 py-3 hover:bg-gray-700"
+        className="bg-black text-white rounded-lg px-6 py-3 hover:bg-gray-700 mb-40 transition"
         
         >
           Continue Shopping
@@ -89,7 +89,7 @@ const Cart = () => {
         <h2 className="text-xl font-bold">Total: ${total.toFixed(2)}</h2>
         <Link
         to="/checkout"
-        className="bg-black text-white px-6 py-3 rounded-lg"
+        className="bg-black text-white px-6 py-3 rounded-lg "
         >
           Checkout
         </Link>
