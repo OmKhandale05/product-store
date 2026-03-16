@@ -4,35 +4,25 @@ import { useCart } from "../context/CartContext";
 import SearchBar from "./SearchBar";
 import { useLocation } from "react-router-dom";
 
+const Navbar = ({ search, setSearch }) => {
+  const { cartItems } = useCart();
 
-const Navbar = ({search, setSearch}) => {
-    const { cartItems } = useCart();
-
-  const totalItems = cartItems.reduce(
-    (acc, item) => acc + item.quantity,
-    0
-  );
+  const totalItems = cartItems.reduce((acc, item) => acc + item.quantity, 0);
   const location = useLocation();
 
-  const hideSearch = location.pathname === "/cart" || location.pathname === "/checkout" || location.pathname === "/order-success";
+  const hideSearch =
+    location.pathname === "/cart" ||
+    location.pathname === "/checkout" ||
+    location.pathname === "/order-success";
 
-    return ( 
-        <nav className="flex justify-between items-center px-8 py-4 border-b">
-
-      
+  return (
+    <nav className="flex justify-between items-center px-8 py-4 border-b">
       <Link to="/" className="text-xl font-bold">
         ProductStore
       </Link>
-      {!hideSearch && (
-        <SearchBar search={search} setSearch={setSearch}/>
+      {!hideSearch && <SearchBar search={search} setSearch={setSearch} />}
 
-      )}
-      
-      <Link
-        to="/cart"
-        className="relative flex items-center"
-      >
-
+      <Link to="/cart" className="relative flex items-center">
         <ShoppingCartIcon className="h-7 w-7" />
 
         {totalItems > 0 && (
@@ -40,10 +30,8 @@ const Navbar = ({search, setSearch}) => {
             {totalItems}
           </span>
         )}
-
       </Link>
-
     </nav>
   );
-}
+};
 export default Navbar;
