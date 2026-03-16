@@ -10,7 +10,26 @@ const Cart = () => {
   );
 
   if (cartItems.length === 0) {
-    return <div className="text-center mt-20 text-xl">Your cart is empty</div>;
+    return (
+      <div className="flex flex-col items-center justify-center mt-20 text-center">
+        <img
+        src="https://cdn-icons-png.flaticon.com/512/11329/11329060.png"
+        alt="Empty Cart"
+        className="w-52 mb-6"
+        />
+        <h2 className="text-2xl font-semibold mb-2">Your cart is empty</h2>
+        <p className="text-gray-500 mb-6">Looks like you haven't added anything yet.</p>
+
+        <Link
+        to="/"
+        className="bg-black text-white rounded-lg px-6 py-3 hover:bg-gray-700"
+        
+        >
+          Continue Shopping
+        </Link>
+        
+      </div>
+    )
   }
 
   return (
