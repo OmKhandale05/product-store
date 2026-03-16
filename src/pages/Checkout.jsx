@@ -1,8 +1,14 @@
+import { useState } from "react";
 import { toast } from "react-toastify";
 import { useCart } from "../context/CartContext";
 
 const Checkout = () => {
   const { cartItems, clearCart } = useCart();
+  const [name, setName]= useState("");
+  const [email, setEmail]= useState("");
+  const [address, setAddress]= useState("");
+  const [pincode, setPincode]= useState("");
+
 
   const total = cartItems.reduce(
     (acc, item) => acc + item.price * item.quantity,
@@ -10,6 +16,11 @@ const Checkout = () => {
   );
 
   const handleOrder = () => {
+    if(!name || !email || !address || !pincode){
+        toast.error("please fill all fields");
+        return;
+
+    }
     toast.success("Order placed successfully..");
     clearCart();
   };
@@ -21,21 +32,29 @@ const Checkout = () => {
           <input
             type="text"
             placeholder="Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
             className="w-full border p-3 rounded-lg"
           />
           <input
             type="email"
             placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             className="w-full border p-3 rounded-lg"
           />
           <input
             type="text"
             placeholder="Address"
+            value={address}
+            onChange={(e) =>setAddress(e.target.value)}
             className="w-full border p-3 rounded-lg"
           />
           <input
             type="number"
             placeholder="Pin code"
+            value={pincode}
+            onChange={(e) => setPincode(e.target.value)}
             className="w-full border p-3 rounded-lg"
           />
         </div>
