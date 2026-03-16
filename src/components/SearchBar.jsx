@@ -1,4 +1,4 @@
-import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import { MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/outline";
 
 const SearchBar = ({search, setSearch}) => {
     return ( 
@@ -11,9 +11,17 @@ const SearchBar = ({search, setSearch}) => {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 className="w-full outline-none"
-            
-            
             />
+
+            {search && (
+                <button
+                onClick={() => setSearch("")}
+                className="ml-2 text-gray-400 hover:text-black"
+                
+                >
+                    <XMarkIcon className="h-5 w-5"/>
+                </button>
+            )}
         </div>
      );
 }
