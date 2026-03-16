@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 const CartContext = createContext();
 
@@ -29,12 +30,14 @@ export function CartProvider({ children }) {
       );
 
       if (existingProduct) {
+        toast.info("Quantity updated in cart");
         return prevCart.map((item) =>
           item.id === product.id
             ? { ...item, quantity: item.quantity + 1 }
             : item
         );
       }
+      toast.success("Product added to cart");
 
       return [...prevCart, { ...product, quantity: 1 }];
     });
@@ -42,6 +45,7 @@ export function CartProvider({ children }) {
   };
 
   const removeFromCart = (id) => {
+    toast.error("Product removed from cart");
     setCartItems((prevCart) =>
       prevCart.filter((item) => item.id !== id)
     );
