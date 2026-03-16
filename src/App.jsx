@@ -12,9 +12,10 @@ function App() {
       <AppRoutes search={search}/>
 
       <ToastContainer
-      position="bottom-left"
+      position="bottom-right"
       autoClose={2000}
       theme="colored"
+    
       
       />
     </div>

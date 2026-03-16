@@ -30,14 +30,18 @@ export function CartProvider({ children }) {
       );
 
       if (existingProduct) {
-        toast.info("Quantity updated in cart");
+        toast.info("Quantity updated", {
+          toastId: `update-${product.id}`
+        });
         return prevCart.map((item) =>
           item.id === product.id
             ? { ...item, quantity: item.quantity + 1 }
             : item
         );
       }
-      toast.success("Product added to cart");
+      toast.success("Product added to cart",{
+        toastId: `add-${product.id}`
+      });
 
       return [...prevCart, { ...product, quantity: 1 }];
     });
@@ -45,7 +49,9 @@ export function CartProvider({ children }) {
   };
 
   const removeFromCart = (id) => {
-    toast.error("Product removed from cart");
+    toast.error("Product removed", {
+      toastId: `remove-${id}`
+    });
     setCartItems((prevCart) =>
       prevCart.filter((item) => item.id !== id)
     );
