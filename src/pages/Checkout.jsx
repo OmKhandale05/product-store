@@ -33,6 +33,11 @@ const Checkout = () => {
             placeholder="Address"
             className="w-full border p-3 rounded-lg"
           />
+          <input
+            type="number"
+            placeholder="Pin code"
+            className="w-full border p-3 rounded-lg"
+          />
         </div>
       </div>
 
