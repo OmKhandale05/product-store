@@ -87,7 +87,7 @@ const Home = ({ search }) => {
 
   return (
     <div className="p-8">
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4  mb-6">
         <CategoryFilter category={category} setCategory={setCategory} />
         <div className="flex gap-4">
           <PriceFilter priceRange={priceRange} setPriceRange={setPriceRange} />
